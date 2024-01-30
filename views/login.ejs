@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs") %>
+    <title>Login || Restaurant</title>
+  </head>
+  <style>
+    label {
+        font-size: 1.3rem;
+    }
+
+    .btn {
+        background-color: #8451cb;
+        border: none;
+        font-size: 1.2rem;
+    }
+    .btn:hover {
+        background-color: #844dd1;
+    }
+  </style>
+  <body>
+    <div
+      class="container d-flex"
+      style="
+        border: 1px solid gray;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        width: 60%;
+        border-radius: 0.5rem;
+      "
+    >
+      <div class="left-container" style="width: 50%; padding: 2rem 1.5rem">
+        <h2 class="mb-4" style="text-align: center">Login</h2>
+        <form action="/user/login" method="post">
+          <div class="mb-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              name="email"
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              name="password"
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-primary"
+              type="submit"
+            >
+              Login
+            </button>
+            <p>Create new account? <a href="/user/signup">SignUp</a></p>
+          </div>
+        </form>
+      </div>
+      <hr />
+      <div class="right-container" style="width: 50%">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/029/726/216/original/3d-purple-illustration-icon-of-using-smartphone-for-sign-up-or-login-to-profile-account-with-security-padlock-side-free-png.png"
+          alt=""
+          width="100%"
+        />
+      </div>
+    </div>
+
+    <%- include("./partials/script.js") %>
+  </body>
+</html>

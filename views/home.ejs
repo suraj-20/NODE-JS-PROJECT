@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs") %>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="./Styles/nav.css" />
+  </head>
+  <body>
+    <%- include("./partials/nav.ejs") %> <%= JSON.stringify(locals.user) %> <%-
+    include("./partials/script.js") %>
+  </body>
+</html>

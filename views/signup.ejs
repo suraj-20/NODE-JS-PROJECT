@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs") %>
+    <title>SignUp || Restaurant</title>
+  </head>
+  <body>
+    <div
+      class="container d-flex"
+      style="
+        border: 1px solid gray;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        width: 60%;
+        border-radius: 0.5rem;
+        align-items: center;
+      "
+    >
+      <div class="left-container" style="width: 50%; padding: 1.5rem">
+        <h2 class="mb-3" style="text-align: center">SignUp</h2>
+        <form action="/user/signup" method="post">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+              name="name"
+              type="text"
+              class="form-control"
+              id="name"
+              aria-describedby="name"
+              autocomplete="off"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              name="email"
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              name="password"
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-md btn-primary"
+              type="submit"
+              style="background-color: #4381ba; border: none"
+            >
+              SignUp
+            </button>
+            <p>Already have an account? <a href="/user/login">Login</a></p>
+          </div>
+        </form>
+      </div>
+      <hr />
+      <div class="right-container" style="width: 50%">
+        <img
+          src="https://cdni.iconscout.com/illustration/premium/thumb/sign-up-page-1886582-1598253.png"
+          alt=""
+          width="100%"
+          height="100%"
+        />
+      </div>
+    </div>
+
+    <%- include("./partials/script.js") %>
+  </body>
+</html>
