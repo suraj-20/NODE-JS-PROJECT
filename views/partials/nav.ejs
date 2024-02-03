@@ -1,9 +1,50 @@
+<style>
+  .logo1 {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 0px 8px 0px;
+    font-weight: bold;
+    color: #ce0505;
+    font-size: 2rem;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .loginpart {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .btn-Createaccount {
+      border: 1px solid;
+      border-radius: 0.2rem;
+      padding: 0.4rem 0.5rem;
+    }
+
+    .btn-transperant {
+      color: #fff;
+    }
+
+    .btn-transperant:hover {
+      color: #fff;
+
+    }
+</style>
+
 <nav
   class="navbar navbar-expand-lg bg-body-tertiary"
-  style="height: 4.5rem; background-color: bisque !important"
+  style="height: 4.5rem; background-color: #ce0505 !important"
 >
   <div class="container-fluid" style="padding: 0.5rem 1.5rem">
-    <a class="navbar-brand" href="#" style="font-size: 1.5rem">LOGO</a>
+    <div class="col-6">
+      <div class="logo1">e!</div>
+    </div>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,41 +56,34 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div
-      class="collapse navbar-collapse"
-      id="navbarNavDropdown"
-      style="width: 100%; justify-content: center"
-    >
-      <ul class="navbar-nav" style="gap: 1rem; font-size: 1.2rem">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">ABOUT</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">RESTAURANTS</a>
-        </li>
-      </ul>
-    </div>
+
     <% if (locals.user) { %>
-    <div
-      class="d-grid gap-3 d-md-flex justify-content-md-end align-items-center"
-    >
+    <div class="loginpart gap-2">
+      <a
+        class="btn-transperant btn-Createaccount navbar-brand"
+        href="/user/login"
+        >Logout</a
+      >
+      <p class="navbar-brand" style="align-items: center; margin: 0%">
+        <%= user.name %>
+      </p>
       <img
         src="<%= user.profileImageURL %>"
         width="50px"
         style="border-radius: 70%"
       />
-      <p class="navbar-brand" style="align-items: center; margin: 0%">
-        <%= user.name %>
-      </p>
-      <a class="btn btn-primary" href="/user/login">Logout</a>
     </div>
     <% } else { %>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <a class="navbar-brand" href="/user/login">Login</a>
-      <a class="navbar-brand" href="/user/signup">Signup</a>
+    <div class="loginpart">
+      <a href="/user/login" class="btn-transperant btn-Login navbar-brand">
+        Login
+      </a>
+      <a
+        href="/user/signup"
+        class="btn-transperant btn-Createaccount navbar-brand"
+      >
+        Create an account
+      </a>
     </div>
     <% } %>
   </div>

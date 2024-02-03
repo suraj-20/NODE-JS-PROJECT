@@ -27,5 +27,5 @@ module.exports.handleUserLogin = async (req, res) => {
 };
 
 module.exports.handleUserLogout = (req, res) => {
-  return res.clearCookie("token").redirect("/");
+  return res.clearCookies("token").redirect("/");
 }

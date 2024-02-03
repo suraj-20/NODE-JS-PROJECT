@@ -1,0 +1,71 @@
+<style>
+  .QuickBoxes {
+    box-shadow: 0.8rem 0.8rem 0.6rem rgb(241, 236, 236);
+    margin-bottom: 2rem;
+    height: 10rem;
+    display: flex;
+    margin-right: 3rem;
+    /* border: 1px solid black; */
+    padding: 0;
+    justify-content: space-between;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .col-sm-3 {
+    width: 28%;
+  }
+
+  .Quickimg_box {
+    height: 100%;
+    width: 50%;
+  }
+
+  .Quickimg_box img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .QuickText {
+    width: 50%;
+    margin: 0rem 2rem;
+  }
+
+  .Quickhead {
+    color: #192f60;
+    font-size: 1.4rem;
+    margin-top: 4%;
+    font-weight: 600;
+  }
+
+  .QuickPara {
+    color: #8c96ab;
+    font-size: 1rem;
+    font-family: Poppins;
+  }
+</style>
+
+<div class="container mt-5">
+  <div class="heading">
+    <h3 style="font-weight: 700">Quick Searches</h3>
+  </div>
+  <div class="peragraph">
+    <p>Discover restaurants by type of meal</p>
+  </div>
+
+  <div class="row mt-4 justify-content-between">
+    <% mealTypes.forEach(mealType => { %>
+    <div class="QuickBoxes col-sm-3">
+      <div class="Quickimg_box">
+        <img src="<%= mealType.mealImageURL %>" class="card-img-top" />
+      </div>
+      <div class="QuickText">
+        <div class="Quickhead"><%= mealType.mealName %></div>
+        <div class="QuickPara">
+          <p>Start your day with exclusive <%= mealType.mealName %> options</p>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>

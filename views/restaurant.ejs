@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs") %>
+    <title>Meal Places</title>
+  </head>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="container mt-4">
+      <div class="mealtype-heading">
+        <h2>Breakfast Places in Delhi</h2>
+      </div>
+    </div>
+
+    <%-include("./partials/filterSection.ejs") %> <%-
+    include("./partials/script.js") %>
+  </body>
+</html>
