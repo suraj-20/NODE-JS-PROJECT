@@ -102,6 +102,27 @@
     .loginpart img {
       width: 50px;
     }
+
+    #searchResult {
+      position: absolute;
+      width: 50%;
+      border-radius: 0.2rem;
+      background-color: #9b9898;
+      margin-top: 0.8rem;
+      /* padding: 1rem; */
+    }
+
+    .not-found {
+      margin: 1rem;
+    }
+
+    .rightboxtext {
+      margin: 1rem;
+    }
+
+    .search-btn {
+      display: none;
+    }
   </style>
   <body>
     <div class="header">
@@ -147,65 +168,84 @@
           <h1>Find the best restaurants, cafes, and bars</h1>
         </div>
 
-        <div class="search-area d-flex align-items-center">
-          <div class="searchForLocation">
-            <input
-              type="text"
-              class=""
-              name="searchForLocation"
-              id="searchForLocation"
-              placeholder="Please type a location"
-              onkeyup="sendData(this)"
-            />
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>
-          <div class="searchForRestaurant">
-            <input
-              type="text"
-              class=""
-              name="restaurantName"
-              id=""
-              placeholder="Search for restaurants"
-            />
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <section id="searchResult"></section>
-          </div>
+        <div class="search-area">
+          <form
+            action="/api/restaurant/search"
+            method="get"
+            class="d-flex gap-4"
+          >
+            <div class="searchForLocation">
+              <input
+                type="text"
+                name="restaurantLocation"
+                id="restaurantLocation"
+                placeholder="Please type a location"
+                autocomplete="off"
+              />
+              <button type="submit" class="search-btn">Search</button>
+            </div>
+            <div class="searchForRestaurant">
+              <input
+                type="text"
+                name="restaurantName"
+                id="restaurantName"
+                placeholder="Search for restaurants"
+                autocomplete="off"
+              />
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <button type="submit" class="search-btn">Search</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
     <%- include("./partials/mealType.ejs") %> <%-
     include("./partials/script.js") %>
-    <script>
-      function sendData(e) {
-        const searchResult = document.getElementById("searchResult");
-        fetch(
-          "http://localhost:4000/api/restaurant/getRestarantByLocationAndRestName",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ payload: e.value }),
-          }
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            const payload = data.payload;
-            console.log(payload);
-            searchResult.innerHTML = "";
-            if (payload.length < 1) {
-              searchResult.innerHTML = "<p>Sorry. Nothing Fount</p>";
-              return;
-            }
-            payload.forEach((item, index) => {
-              if (index > 0) searchResult.innerHTML += "<hr>";
-              searchResult.innerHTML += `<p>${item.restaurantName}</p>`;
-            });
-            return;
-          });
-      }
-    </script>
   </body>
 </html>
+
+<!-- 
+<script>
+  function sendData(e) {
+    const searchResult = document.getElementById("searchResult");
+    const match = e.value.match(/^[a-zA-Z ]*/);
+    const match2 = e.value.match(/\s*/);
+
+    if (match2[0] === e.value) {
+      searchResult.innerHTML = "";
+      return;
+    }
+
+    if (match[0] === e.value) {
+      fetch(
+        "http://localhost:4000/api/restaurant/getRestarantByLocationAndRestName",
+        {
+          method: "get",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ payload: e.value }),
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const payload = data.payload;
+          console.log(payload);
+          searchResult.innerHTML = "";
+          if (payload.length < 1) {
+            searchResult.innerHTML = `<p class="not-found">Sorry. Nothing Fount</p>`;
+            return;
+          }
+          payload.forEach((item, index) => {
+            if (index > 0) searchResult.innerHTML += "<hr>";
+            searchResult.innerHTML += `
+    <div class="rightboxtext">
+      <div class="rightboxhead">${item.restaurantName}</div>
+      <div class="rightboxsub">${item.restaurantLocation}</div>
+    </div>
+`;
+          });
+        });
+      return;
+    }
+    searchResult.innerHTML = "";
+  }
+</script> -->

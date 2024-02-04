@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const restaurantSchema = new mongoose.Schema(
   {
-    restaurantName: {
+     restaurantName: {
       type: String,
       required: true,
     },
@@ -16,11 +16,11 @@ const restaurantSchema = new mongoose.Schema(
     },
     cityId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "cities",
+      ref: "city",
     },
     mealId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "mealtypes",
+      ref: "mealType",
     },
     cuisine: {
       type: Array,

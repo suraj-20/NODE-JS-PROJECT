@@ -10,7 +10,7 @@
     box-shadow: 0.1px 0.1px 4px;
     border-radius: 0.2rem;
     grid-row-start: 1;
-    grid-row-end: 4;
+    grid-row-end: 3;
   }
 
   .filter-container {
@@ -96,6 +96,10 @@
   #heading1 {
     color: darkblue;
     font-weight: normal;
+  }
+
+  .pagination-container {
+    grid-column-start: 2;
   }
 </style>
 
@@ -261,7 +265,8 @@
     </div>
   </div>
 
-  <% resultRestaurants.forEach(restaurant => { %>
+  <% if (locals.restaurant.length > 0) { %> <% restaurant.forEach(restaurant =>
+  { %>
   <div class="fooditems">
     <div class="card-container m-4">
       <div class="top-content">
@@ -289,18 +294,28 @@
     </div>
   </div>
   <% }) %>
-</div>
+  <div class="pagination-container">
+    <% if (currentPage > 1) { %>
+    <a
+      href="/api/restaurant/search?restaurantLocation=&restaurantName=&page=<%= currentPage - 1 %>"
+      >Previous</a
+    >
+    <% } %>
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center gap-3">
-    <li class="page-item">
-      <a class="page-link" href="#" tabindex="-1"> < </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#"> > </a>
-    </li>
-  </ul>
-</nav>
+    <span>Page <%= currentPage %></span>
+
+    <% if (currentPage > 0) { %>
+    <a
+      href="/api/restaurant/search?restaurantLocation=&restaurantName=&page=<%= currentPage + 1 %>"
+      >Next</a
+    >
+      <% } %>
+  </div>
+  <% } else { %>
+  <div class="fooditems">
+    <div class="card-container m-4">
+      <h2>No restaurants found.</h2>
+      </div>
+  </div>
+  <% } %>
+</div>
