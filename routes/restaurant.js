@@ -5,6 +5,8 @@ const {
 } = require("../controllers/restaurant");
 const { addCityList, getCityList } = require("../controllers/city");
 const { mealTypes, handleDeleteMealType } = require("../controllers/mealtype");
+const Restaurants = require("../models/restaurant");
+
 const router = express.Router();
 
 // POST routes..

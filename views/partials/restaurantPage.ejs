@@ -1,8 +1,10 @@
 <style>
   .d-grid {
-    grid-template-columns: 20% 70%;
+    grid-template-columns: 24% 70%;
+    grid-template-rows: 45% 45% 10%;
     column-gap: 2rem;
     row-gap: 2rem;
+    justify-content: space-between;
   }
 
   .filterSection {
@@ -97,13 +99,9 @@
     color: darkblue;
     font-weight: normal;
   }
-
-  .pagination-container {
-    grid-column-start: 2;
-  }
 </style>
 
-<div class="container mt-4 d-grid">
+<div class="container mt-4 mb-4 d-grid">
   <div class="filterSection">
     <div class="filter-container">
       <div class="filter mt-3">Filters</div>
@@ -270,7 +268,7 @@
   <div class="fooditems">
     <div class="card-container m-4">
       <div class="top-content">
-        <div class="restImage mb-3">
+        <div class="restImage">
           <img src="<%= restaurant.restaurantImageURL %>" />
         </div>
         <div class="rightboxtext">
@@ -293,29 +291,12 @@
       </div>
     </div>
   </div>
-  <% }) %>
-  <div class="pagination-container">
-    <% if (currentPage > 1) { %>
-    <a
-      href="/api/restaurant/search?restaurantLocation=&restaurantName=&page=<%= currentPage - 1 %>"
-      >Previous</a
-    >
-    <% } %>
 
-    <span>Page <%= currentPage %></span>
-
-    <% if (currentPage > 0) { %>
-    <a
-      href="/api/restaurant/search?restaurantLocation=&restaurantName=&page=<%= currentPage + 1 %>"
-      >Next</a
-    >
-      <% } %>
-  </div>
-  <% } else { %>
+  <% }) %> <%- include("./pegination.ejs") %> <% } else { %>
   <div class="fooditems">
     <div class="card-container m-4">
       <h2>No restaurants found.</h2>
-      </div>
+    </div>
   </div>
   <% } %>
 </div>

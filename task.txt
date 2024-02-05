@@ -48,3 +48,23 @@ router.post("/getRestarantByLocationAndRestName", async (req, res) => {
   // restaurants = restaurants.slice(0, 10);
   return res.send({ payload: restaurants });
 });
+
+
+
+<div class="pagination-container">
+    <% if (currentPage > 1) { %>
+    <a
+      href="/api/restaurant/search?restaurantLocation=&restaurantName=&page=<%= currentPage - 1 %>"
+      >Previous</a
+    >
+    <% } %>
+
+    <span>Page <%= currentPage %></span>
+
+    <% if (currentPage < totalPages) { %>
+    <a
+      href="/api/restaurant/search?restaurantLocation=&restaurantName=&page=<%= currentPage + 1 %>"
+      >Next</a
+    >
+      <% } %>
+  </div>

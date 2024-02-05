@@ -1,0 +1,35 @@
+<style>
+  .pegination-container {
+    grid-column-start: 2;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .anchor-btn {
+    text-decoration: none;
+    border: 1px solid gray;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+}
+</style>
+
+<% if (locals.restaurant.length > 0) { %>
+<div class="pegination-container">
+  <% if (currentPage > 1) { %>
+  <a
+    class="anchor-btn "
+    href="/api/restaurant/search?restaurantLocation=<%= restaurantLocation %>&restaurantName=<%= restaurantName  %>&page=<%= currentPage - 1 %>"
+    >Previous</a
+  >
+  <% } %> Page <%= currentPage %> of <%= totalPages %> <% if (currentPage <
+  totalPages) { %>
+  <a
+    class="anchor-btn"
+    href="/api/restaurant/search?restaurantLocation=<%= restaurantLocation %>&restaurantName=<%= restaurantName  %>&page=<%= currentPage + 1 %>"
+    >Next</a
+  >
+  <% } %>         
+</div>
+<% } %>

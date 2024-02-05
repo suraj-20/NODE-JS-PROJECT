@@ -26,27 +26,34 @@ module.exports.addRestaurantList = async (req, res) => {
 };
 
 module.exports.getRestaurantByLocationAndName = async (req, res) => {
-  const restaurantLocation = req.query.restaurantLocation;
-  const restaurantName = req.query.restaurantName;
+  const { restaurantLocation, restaurantName } = req.query;
+
+  const regexName = restaurantName ? new RegExp(restaurantName, "i") : /.*/;
+  const regexLocation = restaurantLocation
+    ? new RegExp(restaurantLocation, "i")
+    : /.*/;
 
   try {
     const filteredRestaurants = await Restaurants.find({
-      restaurantName: { $regex: new RegExp(restaurantName, "i") },
-      restaurantLocation: { $regex: new RegExp(restaurantLocation, "i") },
+      restaurantName: regexName,
+      restaurantLocation: regexLocation,
     });
 
+    // console.log("filteredRestaurants", filteredRestaurants);
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 2;
-    const totalPages = Math.floor(filteredRestaurants / limit);
+    const totalPages = Math.ceil(filteredRestaurants.length / limit);
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
-    // console.log("totalPages", endIndex);
+    // console.log("totalpages", totalPages);
 
     const resultRestaurants = filteredRestaurants.slice(startIndex, endIndex);
     return res.render("restaurant", {
       restaurant: resultRestaurants,
       currentPage: page,
-      endIndex,
+      totalPages,
+      restaurantLocation,
+      restaurantName,
     });
   } catch (error) {
     console.error("Error retrieving restaurats frpm mongodb", error);

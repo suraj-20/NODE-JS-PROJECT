@@ -3,7 +3,6 @@
   <head>
     <%- include("./partials/head.ejs") %>
     <title>Homepage</title>
-    <link rel="stylesheet" href="./Styles/nav.css" />
   </head>
   <style>
     .header {
@@ -203,49 +202,3 @@
     include("./partials/script.js") %>
   </body>
 </html>
-
-<!-- 
-<script>
-  function sendData(e) {
-    const searchResult = document.getElementById("searchResult");
-    const match = e.value.match(/^[a-zA-Z ]*/);
-    const match2 = e.value.match(/\s*/);
-
-    if (match2[0] === e.value) {
-      searchResult.innerHTML = "";
-      return;
-    }
-
-    if (match[0] === e.value) {
-      fetch(
-        "http://localhost:4000/api/restaurant/getRestarantByLocationAndRestName",
-        {
-          method: "get",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ payload: e.value }),
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          const payload = data.payload;
-          console.log(payload);
-          searchResult.innerHTML = "";
-          if (payload.length < 1) {
-            searchResult.innerHTML = `<p class="not-found">Sorry. Nothing Fount</p>`;
-            return;
-          }
-          payload.forEach((item, index) => {
-            if (index > 0) searchResult.innerHTML += "<hr>";
-            searchResult.innerHTML += `
-    <div class="rightboxtext">
-      <div class="rightboxhead">${item.restaurantName}</div>
-      <div class="rightboxsub">${item.restaurantLocation}</div>
-    </div>
-`;
-          });
-        });
-      return;
-    }
-    searchResult.innerHTML = "";
-  }
-</script> -->
