@@ -55,17 +55,19 @@
 
   <div class="row mt-4 justify-content-between">
     <% mealTypes.forEach(mealType => { %>
-    <div class="QuickBoxes col-sm-3">
-      <div class="Quickimg_box">
-        <img src="<%= mealType.mealImageURL %>" class="card-img-top" />
-      </div>
-      <div class="QuickText">
-        <div class="Quickhead"><%= mealType.mealName %></div>
-        <div class="QuickPara">
-          <p>Start your day with exclusive <%= mealType.mealName %> options</p>
+    <a href="/api/restaurant/search?restaurantCity=<%= restaurantCity %>&restaurantName=<%= restaurantName  %>&meal_type=<%= meal_type %>">
+      <div class="QuickBoxes col-sm-3">
+        <div class="Quickimg_box">
+          <img src="<%= mealType.mealImageURL %>" class="card-img-top" />
+        </div>
+        <div class="QuickText">
+          <div class="Quickhead"><%= mealType.mealName %></div>
+          <div class="QuickPara">
+            <p>Start your day with exclusive <%= mealType.mealName %> options</p>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
     <% }) %>
   </div>
 </div>

@@ -2,6 +2,7 @@ const express = require("express");
 const {
   addRestaurantList,
   getRestaurantByLocationAndName,
+  filterRestaurant
 } = require("../controllers/restaurant");
 const { addCityList, getCityList } = require("../controllers/city");
 const { mealTypes, handleDeleteMealType } = require("../controllers/mealtype");
@@ -17,6 +18,7 @@ router.post("/addCityList", addCityList);
 // GET routes..
 router.get("/getCityList", getCityList);
 router.get("/search", getRestaurantByLocationAndName);
+router.get("/filter", filterRestaurant);
 
 // DELETE routes..
 router.delete("/mealType/:id", handleDeleteMealType);

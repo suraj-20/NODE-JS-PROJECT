@@ -6,28 +6,31 @@ const restaurantSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    restaurantCity: {
+      type: String,
+      required: true,
+    },
+    locality: {
+      type: String,
+      required: true,
+    },
     restaurantImageURL: {
       type: String,
       default: "",
     },
-    restaurantLocation: {
-      type: String,
-      required: true,
-    },
-    cityId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "city",
-    },
-    mealId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "mealType",
+    aggregate_rating: {
+      type: Number
     },
     cuisine: {
       type: Array,
     },
-    costForTwo: {
+    costForOne: {
       type: Number,
     },
+    meal_type: {
+      type: Array,
+      required: true
+    }
   },
   { timestamps: true }
 );

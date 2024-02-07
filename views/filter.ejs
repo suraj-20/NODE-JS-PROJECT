@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="cusineSection mt-3">
+      <div class="cusine-heading">
+        <h5>Cusine</h5>
+      </div>
+      <form action="/api/restaurant/filter" method="get">
+        <div class="form-check ftelement">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="North Indian"
+            name="cuisine"
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            North Indian
+          </label>
+        </div>
+        <div class="form-check ftelement">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="South Indian"
+            name="cuisine"
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            South Indian
+          </label>
+        </div>
+        <div class="form-check ftelement">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="Chinese"
+            name="cuisine"
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Chinese
+          </label>
+        </div>
+        <div class="form-check ftelement">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="Fast Food"
+            name="cuisine"
+            id="flexCheckChecked"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            Fast Food
+          </label>
+        </div>
+        <div class="form-check ftelement">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="Street Food"
+            name="cuisine"
+            id="flexCheckChecked"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            Street Food
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Apply</button>
+      </form>
+    </div>
+
+    <!-- <div class="cusineSection mt-3">
+        <div class="cusine-heading">
+          <h5>Cost For One</h5>
+        </div>
+        <form action="" method="get">
+          <div class="form-check ftelement">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              ₹ 500 to ₹ 1000
+            </label>
+          </div>
+          <div class="form-check ftelement">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault2"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              ₹ 1000 to ₹ 1500
+            </label>
+          </div>
+          <div class="form-check ftelement">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              ₹ 1500 to ₹ 2000
+            </label>
+          </div>
+          <div class="form-check ftelement">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              ₹ 2000+
+            </label>
+          </div>
+        </form>
+      </div> -->
+
+    <div class="cusineSection mt-3">
+      <div class="cusine-heading">
+        <h5>Sort</h5>
+        <form action="/api/restaurant/filter" method="get">
+          <div class="form-check ftelement">
+            <input
+              type="radio"
+              name="sortOrder"
+              id="lowToHigh"
+              value="lowToHigh"
+            />
+            <label for="lowToHigh">Low to High</label>
+          </div>
+          <div class="form-check ftelement">
+            <input
+              type="radio"
+              name="sortOrder"
+              id="highToLow"
+              value="highToLow"
+            />
+            <label for="highToLow">High to Low</label>
+          </div>
+          <button type="submit" class="btn-primary btn">Apply</button>
+        </form>
+      </div>
+    </div>
+
+    <ul>
+      <% restaurants.forEach(restaurant => { %>
+      <li>
+        <%= restaurant.restaurantName %> - Cuisine: <%= restaurant.cuisine %>,
+        Cost: <%= restaurant.costForOne %>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

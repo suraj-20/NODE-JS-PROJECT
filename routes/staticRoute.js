@@ -6,10 +6,25 @@ const City = require("../models/City.json");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  const { restaurantCity, restaurantName, meal_type } = req.query;
+
+  const regexName = restaurantName ? new RegExp(restaurantName, "i") : /.*/;
+  const regexLocation = restaurantCity ? new RegExp(restaurantCity, "i") : /.*/;
+  const regexMeal_type = new RegExp(meal_type, "i");
+
   const allMeals = await mealType.find({});
+  const filteredRestaurants = await Restaurants.find({
+    restaurantName: regexName,
+    restaurantCity: regexLocation,
+    meal_type: regexMeal_type,
+  });
   return res.render("home", {
     user: req.user,
     mealTypes: allMeals,
+    restaurantCity,
+    restaurantName,
+    meal_type,
+    filteredRestaurants
   });
 });
 
@@ -20,22 +35,5 @@ router.get("/user/signup", (req, res) => {
 router.get("/user/login", (req, res) => {
   return res.render("login");
 });
-
-// router.get("/api/restaurant/search", async (req, res) => {
-//   const restaurantLocation = req.query.restaurantLocation;
-//   const restaurantName = req.query.restaurantName;
-//   const filteredRestaurants = await Restaurants.find({
-//     restaurantName: { $regex: new RegExp(restaurantName, "i") },
-//     restaurantLocation: { $regex: new RegExp(restaurantLocation, "i") },
-//   });
-
-//   let page = Number(req.query.page) || 1;
-//   let limit = Number(req.query.limit) || 2;
-//   let startIndex = (page - 1) * limit;
-//   let endIndex = page * limit;
-
-//   const resultRestaurants = filteredRestaurants.slice(startIndex, endIndex);
-//   res.render("restaurant", { restaurant: resultRestaurants });
-// });
 
 module.exports = router;

@@ -1,29 +1,29 @@
 <style>
-  .d-grid {
-    grid-template-columns: 24% 70%;
-    grid-template-rows: 45% 45% 10%;
-    column-gap: 2rem;
-    row-gap: 2rem;
-    justify-content: space-between;
-  }
-
   .filterSection {
     border: 1px solid #fbfbfb;
     box-shadow: 0.1px 0.1px 4px;
     border-radius: 0.2rem;
-    grid-row-start: 1;
-    grid-row-end: 3;
+    width: 25%;
   }
 
   .filter-container {
-    margin: 1rem 2rem;
+    padding: 1rem 2rem;
   }
 
   .filter {
-    color: darkblue;
+    color: rgb(7, 7, 158);
     font-weight: bold;
     font-family: sans-serif;
-    font-size: 18px;
+  }
+
+  .filter-type-heading {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: rgb(7, 7, 158);
+  }
+
+  .sortOrder ul {
+    list-style-type: none;
   }
 
   .selectLocation {
@@ -43,15 +43,11 @@
     color: rgb(48, 140, 170);
   }
 
-  .cusineSection {
-    font-size: 18px;
-    color: darkblue;
-  }
-
-  .ftelement {
-    font-weight: lighter;
-    color: rgb(94, 163, 185);
-    font-size: 14px;
+  .restaurants-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
   .fooditems {
@@ -64,7 +60,7 @@
   }
 
   .restImage {
-    width: 20%;
+    width: 15%;
     height: 20%;
   }
 
@@ -91,6 +87,15 @@
     font-size: 17px;
   }
 
+  .rating {
+    background: rgb(249, 0, 0);
+    width: 25%;
+    border-radius: 0.2rem;
+    color: #fff;
+    font-size: 0.9rem;
+    padding-left: 0.5rem;
+  }
+
   hr {
     width: 100%;
   }
@@ -99,12 +104,28 @@
     color: darkblue;
     font-weight: normal;
   }
+
+  .pegination-container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .anchor-btn {
+    text-decoration: none;
+    border: 1px solid gray;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+  }
 </style>
 
-<div class="container mt-4 mb-4 d-grid">
+<div class="container mt-4 mb-6 d-flex justify-content-between">
   <div class="filterSection">
     <div class="filter-container">
-      <div class="filter mt-3">Filters</div>
+      <h3 class="filter">Filter</h3>
       <div class="selectLocation mt-3">
         <h6>Select Location</h6>
         <select class="select-box mt-2">
@@ -118,185 +139,208 @@
                   })} -->
         </select>
       </div>
-
-      <div class="cusineSection mt-3">
-        <div class="cusine-heading">
-          <h5>Cusine</h5>
-        </div>
-        <div class="form-check ftelement">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-          />
-          <label class="form-check-label" for="flexCheckDefault">
-            North Indian
-          </label>
-        </div>
-        <div class="form-check ftelement">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-          />
-          <label class="form-check-label" for="flexCheckDefault">
-            South Indian
-          </label>
-        </div>
-        <div class="form-check ftelement">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-          />
-          <label class="form-check-label" for="flexCheckDefault">
-            Chinese
-          </label>
-        </div>
-        <div class="form-check ftelement">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckChecked"
-            checked
-          />
-          <label class="form-check-label" for="flexCheckChecked">
-            Fast Food
-          </label>
-        </div>
-        <div class="form-check ftelement">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckChecked"
-            checked
-          />
-          <label class="form-check-label" for="flexCheckChecked">
-            Street Food
-          </label>
-        </div>
-      </div>
-
-      <div class="cusineSection mt-3">
-        <div class="cusine-heading">
-          <h5>Cost For Two</h5>
-        </div>
-        <div class="form-check ftelement">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
-          />
-          <label class="form-check-label" for="flexRadioDefault1">
-            ₹ 500 to ₹ 1000
-          </label>
-        </div>
-        <div class="form-check ftelement">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault2"
-            checked
-          />
-          <label class="form-check-label" for="flexRadioDefault2">
-            ₹ 1000 to ₹ 1500
-          </label>
-        </div>
-        <div class="form-check ftelement">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
-          />
-          <label class="form-check-label" for="flexRadioDefault1">
-            ₹ 1500 to ₹ 2000
-          </label>
-        </div>
-        <div class="form-check ftelement">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
-          />
-          <label class="form-check-label" for="flexRadioDefault1">
-            ₹ 2000+
-          </label>
-        </div>
-      </div>
-
-      <div class="cusineSection mt-3">
-        <div class="cusine-heading">
-          <h5>Sort</h5>
-          <div class="form-check ftelement">
+      <form
+        action="/api/restaurant/search"
+        method="get"
+        class="d-flex flex-column gap-3"
+      >
+        <div class="cuisine d-flex flex-column gap-1">
+          <label class="filter-type-heading" for="cuisine">Cuisine:</label>
+          <div class="form-check">
             <input
               class="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
+              type="checkbox"
+              value="North Indian"
+              name="cuisine"
+              id="flexCheckDefault"
             />
-            <label class="form-check-label" for="flexRadioDefault1">
-              Price low to high
+            <label class="form-check-label" for="flexCheckDefault">
+              North Indian
             </label>
           </div>
-          <div class="form-check ftelement">
+
+          <div class="form-check">
             <input
               class="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault2"
+              type="checkbox"
+              value="South Indian"
+              name="cuisine"
+              id="flexCheckDefault"
             />
-            <label class="form-check-label" for="flexRadioDefault2">
-              Price high to low
+            <label class="form-check-label" for="flexCheckDefault">
+              South Indian
             </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="Chinese"
+              name="cuisine"
+              id="flexCheckDefault"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Chinese
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="Fast Food"
+              name="cuisine"
+              id="flexCheckChecked"
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              Fast Food
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="Street Food"
+              name="cuisine"
+              id="flexCheckChecked"
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              Street Food
+            </label>
+          </div>
+        </div>
+
+        <div class="max-cost d-flex flex-column gap-1">
+          <label class="filter-type-heading" for="maxCost">Max Cost:</label>
+          <div class="form-check">
+            <label
+              ><input
+                class="form-check-input"
+                type="radio"
+                name="maxCost"
+                id="flexRadioDefault1"
+                value="500"
+              />
+              ₹ 500
+            </label>
+          </div>
+          <div class="form-check">
+            <label
+              ><input
+                class="form-check-input"
+                type="radio"
+                name="maxCost"
+                id="flexRadioDefault2"
+                value="1000"
+              />
+              ₹ 1000
+            </label>
+          </div>
+          <div class="form-check">
+            <label
+              ><input
+                class="form-check-input"
+                type="radio"
+                name="maxCost"
+                id="flexRadioDefault1"
+                value="1500"
+              />
+              ₹ 1500
+            </label>
+          </div>
+
+          <div class="form-check">
+            <label
+              ><input
+                class="form-check-input"
+                type="radio"
+                name="minCost"
+                id="flexRadioDefault1"
+                value="2000"
+              />
+              ₹ 2000+
+            </label>
+          </div>
+        </div>
+
+        <div class="sortOrder d-flex flex-column gap-1">
+          <label class="filter-type-heading" for="sortOrder">Sort Order:</label>
+
+          <div class="form-check">
+            <input
+              type="radio"
+              name="sortOrder"
+              id="lowToHigh"
+              value="lowToHigh"
+            />
+            <label for="lowToHigh">Low to High</label>
+          </div>
+
+          <div class="form-check">
+            <input
+              type="radio"
+              name="sortOrder"
+              id="highToLow"
+              value="highToLow"
+            />
+            <label for="highToLow">High to Low</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </form>
+    </div>
+  </div>
+
+  <% if (locals.restaurant.length > 0) { %>
+
+  <div class="restaurants-container">
+    <% restaurant.forEach(restaurant => { %>
+    <div class="fooditems">
+      <div class="card-container m-4">
+        <div class="top-content">
+          <div class="restImage">
+            <img
+              src="<%= restaurant.restaurantImageURL %>"
+              width="250"
+              height="130"
+            />
+          </div>
+          <div class="rightboxtext">
+            <div class="rightboxhead"><%= restaurant.restaurantName %></div>
+            <div class="rightboxsub">Fort</div>
+            <div class="rightboxsub">
+              <%= restaurant.locality %>, <%= restaurant.restaurantCity %>
+            </div>
+            <div class="rating">
+              <%= restaurant.aggregate_rating %>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div id="heading1">
+          <div>
+            <span class="cuisine">CUISINES :</span>
+            <span class="bakery"><%= restaurant.cuisine %></span>
+          </div>
+
+          <div>
+            <span class="cuisine">COST FOR TWO : ₹</span>
+            <span class="bakery"> <%= restaurant.costForOne %></span>
           </div>
         </div>
       </div>
     </div>
+    <% }) %>
   </div>
-
-  <% if (locals.restaurant.length > 0) { %> <% restaurant.forEach(restaurant =>
-  { %>
-  <div class="fooditems">
-    <div class="card-container m-4">
-      <div class="top-content">
-        <div class="restImage">
-          <img src="<%= restaurant.restaurantImageURL %>" />
-        </div>
-        <div class="rightboxtext">
-          <div class="rightboxhead"><%= restaurant.restaurantName %></div>
-          <div class="rightboxsub">Fort</div>
-          <div class="rightboxsub"><%= restaurant.restaurantLocation %></div>
-        </div>
-      </div>
-      <hr />
-      <div id="heading1">
-        <div>
-          <span class="cuisine">CUISINES :</span>
-          <span class="bakery"><%= restaurant.cuisine %></span>
-        </div>
-
-        <div>
-          <span class="cuisine">COST FOR TWO :</span>
-          <span class="bakery"> <%= restaurant.costForTwo %></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <% }) %> <%- include("./pegination.ejs") %> <% } else { %>
+  <% } else { %>
   <div class="fooditems">
     <div class="card-container m-4">
       <h2>No restaurants found.</h2>
     </div>
   </div>
   <% } %>
+
 </div>
+<%- include("./pegination.ejs") %> 
