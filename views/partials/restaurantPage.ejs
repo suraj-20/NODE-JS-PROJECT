@@ -50,8 +50,13 @@
     gap: 2rem;
   }
 
+  .restaurants-container a {
+    text-decoration: none;
+  }
+
   .fooditems {
     box-shadow: 0px 0.1px 6px;
+    width: 100%;
   }
 
   .top-content {
@@ -296,42 +301,44 @@
 
   <div class="restaurants-container">
     <% restaurant.forEach(restaurant => { %>
-    <div class="fooditems">
-      <div class="card-container m-4">
-        <div class="top-content">
-          <div class="restImage">
-            <img
-              src="<%= restaurant.restaurantImageURL %>"
-              width="250"
-              height="130"
-            />
-          </div>
-          <div class="rightboxtext">
-            <div class="rightboxhead"><%= restaurant.restaurantName %></div>
-            <div class="rightboxsub">Fort</div>
-            <div class="rightboxsub">
-              <%= restaurant.locality %>, <%= restaurant.restaurantCity %>
+    <a href="/api/restaurant/restaurantDetails/<%= restaurant._id %>" class="d-flex">
+      <div class="fooditems">
+        <div class="card-container m-4">
+          <div class="top-content">
+            <div class="restImage">
+              <img
+                src="<%= restaurant.restaurantImageURL %>"
+                width="250"
+                height="130"
+              />
             </div>
-            <div class="rating">
-              <%= restaurant.aggregate_rating %>
-              <i class="fa-solid fa-star"></i>
+            <div class="rightboxtext">
+              <div class="rightboxhead"><%= restaurant.restaurantName %></div>
+              <div class="rightboxsub">Fort</div>
+              <div class="rightboxsub">
+                <%= restaurant.locality %>, <%= restaurant.restaurantCity %>
+              </div>
+              <div class="rating">
+                <%= restaurant.aggregate_rating %>
+                <i class="fa-solid fa-star"></i>
+              </div>
             </div>
           </div>
-        </div>
-        <hr />
-        <div id="heading1">
-          <div>
-            <span class="cuisine">CUISINES :</span>
-            <span class="bakery"><%= restaurant.cuisine %></span>
-          </div>
+          <hr />
+          <div id="heading1">
+            <div>
+              <span class="cuisine">CUISINES :</span>
+              <span class="bakery"><%= restaurant.cuisine %></span>
+            </div>
 
-          <div>
-            <span class="cuisine">COST FOR TWO : ₹</span>
-            <span class="bakery"> <%= restaurant.costForOne %></span>
+            <div>
+              <span class="cuisine">COST FOR TWO : ₹</span>
+              <span class="bakery"> <%= restaurant.costForOne %></span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </a>
     <% }) %>
   </div>
   <% } else { %>
@@ -341,6 +348,5 @@
     </div>
   </div>
   <% } %>
-
 </div>
-<%- include("./pegination.ejs") %> 
+<%- include("./pegination.ejs") %>

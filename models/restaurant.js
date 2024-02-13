@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const restaurantSchema = new mongoose.Schema(
   {
-     restaurantName: {
+    restaurantName: {
       type: String,
       required: true,
     },
@@ -19,7 +19,7 @@ const restaurantSchema = new mongoose.Schema(
       default: "",
     },
     aggregate_rating: {
-      type: Number
+      type: Number,
     },
     cuisine: {
       type: Array,
@@ -29,8 +29,11 @@ const restaurantSchema = new mongoose.Schema(
     },
     meal_type: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
+    phone_number: {
+      type: Number,
+    },
   },
   { timestamps: true }
 );

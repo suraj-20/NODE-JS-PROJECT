@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs") %>
+    <title>Restaurant Details</title>
+  </head>
+  <style>
+    .details {
+      margin-top: 60px;
+    }
+
+    .images {
+      height: 400px;
+    }
+
+    .images img {
+      height: 390px;
+      width: 100%;
+    }
+
+    .carousel .control-dots {
+      margin: -20px;
+    }
+
+    .restName h2 {
+      color: #192f60;
+      font-weight: bold;
+    }
+
+    .fontSizeFixer {
+      font-size: 16px;
+    }
+
+    .react-tabs__tab {
+      font-family: Poppins;
+      font-size: 18px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: left;
+      color: #192f60;
+      border: none;
+    }
+
+    .react-tabs__tab--selected {
+      border: none;
+      border-bottom: solid 3px #ce0505;
+    }
+
+    .about {
+      font-size: 28px;
+      font-weight: 600;
+      color: #192f60;
+    }
+
+    .cuisine {
+      font-weight: 600;
+      color: #192f60;
+    }
+
+    .cuisine-details {
+      font-weight: 400;
+      color: #000;
+    }
+
+    .card-body {
+      padding: 0;
+    }
+  </style>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="container details">
+      <div class="images">
+        <Carousel showThumbs="{false}">
+          <div>
+            <img
+              key="{index}"
+              src="<%= restaurant.restaurantImageURL %>"
+              alt="not found"
+            />
+          </div>
+        </Carousel>
+      </div>
+
+      <div class="restName my-3">
+        <h2><%= restaurant.restaurantName %></h2>
+      </div>
+      <!-- <button class="btn fontSizeFixer btn-danger float-end mt-4">
+        Place Online Order
+      </button> -->
+      <div class="myTabs mb-5">
+        <button type="button" class="btn" onclick="showOverview()">
+          Overview
+        </button>
+        <button type="button" class="btn" onclick="showOrder()">Order</button>
+        <% if (locals.restaurant) { %>
+        <div id="overviewSection">
+          <div class="about my-1">About this place</div>
+          <div class="cuisines">
+            <div class="cuisine">
+              <h5>Cuisine</h5>
+              <div class="cuisine-details"><%= restaurant.cuisine %></div>
+            </div>
+            <div class="cuisine mt-1">
+              <h5>Average Cost</h5>
+              <div class="cuisine-details">
+                ₹ <%= restaurant.costForOne %> for two people (approx.)
+              </div>
+            </div>
+            <div class="cuisine mt-1">
+              <h5>Location</h5>
+              <div class="cuisine-details">
+                <%= restaurant.locality %>, <%= restaurant.restaurantCity %>
+              </div>
+            </div>
+            <div class="cuisine mt-1">
+              <h5>Phone Number</h5>
+              <div class="text-danger cuisine-details">+91 8287146841</div>
+            </div>
+          </div>
+        </div>
+        <% } %> <% if (locals.menuItem) { %>
+        <div id="orderSection" style="display: none">
+          <h2>Order Online</h2>
+          <div class="order-online container justify-content-between">
+            <% menuItem.forEach(menuItem => { %>
+            <div
+              class="card col-sm-3 row mb-3"
+              style="border: none; width: 70%"
+            >
+              <div class="row g-0" style="align-items: center;">
+                <div class="col-md-3">
+                  <img
+                    src="<%= menuItem.image %>"
+                    class="img-fluid rounded-start"
+                    alt="..."
+                  />
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= menuItem.name %></h5>
+                    <p class="card-text mb-1">
+                      <small class="text-body-secondary"
+                        >₹ <%= menuItem.price %></small
+                      >
+                    </p>
+                    <p
+                      class="card-text mb-1"
+                      style="overflow-wrap: break-word; font-size: 0.99rem"
+                    >
+                      <%= menuItem.description %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    <script>
+      function showOverview() {
+        document.getElementById("overviewSection").style.display = "block";
+        document.getElementById("orderSection").style.display = "none";
+      }
+      function showOrder() {
+        document.getElementById("overviewSection").style.display = "none";
+        document.getElementById("orderSection").style.display = "block";
+      }
+    </script>
+  </body>
+</html>

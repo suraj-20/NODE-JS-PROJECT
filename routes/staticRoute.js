@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
     restaurantCity,
     restaurantName,
     meal_type,
-    filteredRestaurants
+    filteredRestaurants,
   });
 });
 

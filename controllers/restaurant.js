@@ -1,3 +1,4 @@
+const MenuItem = require("../models/menuItme");
 const Restaurants = require("../models/restaurant");
 
 module.exports.addRestaurantList = async (req, res) => {
@@ -30,8 +31,14 @@ module.exports.addRestaurantList = async (req, res) => {
 };
 
 module.exports.getRestaurantByLocationAndName = async (req, res) => {
-  const { restaurantCity, restaurantName, cuisine, sortOrder, maxCost, minCost } =
-    req.query;
+  const {
+    restaurantCity,
+    restaurantName,
+    cuisine,
+    sortOrder,
+    maxCost,
+    minCost,
+  } = req.query;
 
   const query = {};
 
@@ -119,5 +126,27 @@ module.exports.filterRestaurant = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+module.exports.getRestaurantById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const restaurant = await Restaurants.findById(id);
+    const menuItem = await MenuItem.find({ restaurant: id });
+    console.log(menuItem);
+
+    if (!menuItem) {
+      return res.status(404).send("Menu Item not found.");
+    }
+
+    if (!restaurant) {
+      return res.status(404).send("Restaurant Not Found.");
+    }
+
+    res.render("restaurantDetails", { restaurant, menuItem });
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
   }
 };
