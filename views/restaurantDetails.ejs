@@ -131,7 +131,7 @@
               class="card col-sm-3 row mb-3"
               style="border: none; width: 70%"
             >
-              <div class="row g-0" style="align-items: center;">
+              <div class="row g-0" style="align-items: center">
                 <div class="col-md-3">
                   <img
                     src="<%= menuItem.image %>"
@@ -144,7 +144,7 @@
                     <h5 class="card-title"><%= menuItem.name %></h5>
                     <p class="card-text mb-1">
                       <small class="text-body-secondary"
-                        >₹ <%= menuItem.price %></small
+                        >₹ <%= menuItem.price.toFixed(2) %></small
                       >
                     </p>
                     <p
@@ -154,6 +154,14 @@
                       <%= menuItem.description %>
                     </p>
                   </div>
+                </div>
+                <div class="col-md-2">
+                  <form action="/api/restaurant/cart" method="get">
+                    <input type="hidden" name="itemId" value="<%= menuItem._id %>">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" value="1" min="1">
+                    <button type="submit">Add to Cart</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -172,6 +180,10 @@
       function showOrder() {
         document.getElementById("overviewSection").style.display = "none";
         document.getElementById("orderSection").style.display = "block";
+      }
+
+      function addToCart(menuItemId) {
+        console.log("Added To Cart:", menuItemId);
       }
     </script>
   </body>

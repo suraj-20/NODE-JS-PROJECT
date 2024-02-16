@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+  </head>
+
+  <body>
+    <h1>Shopping Cart</h1>
+
+    <div class="cart-section">
+      <h2>Shopping Cart</h2>
+      <% if (cartItems && cartItems.length > 0) { %>
+      <ul>
+        <% cartItems.forEach(cartItem => { %>
+            <div id="box">
+                <div className="menuContainer">
+                  <div className="menuInfo">
+                    <h3 className="menuItemName">{item.name}</h3>
+                    <h4 className="Rupees">Cost : &#8377; {item.price}</h4>
+                    <div className="Deep">{item.description}</div>
+                  </div>
+                  <div>
+                    <img className='img' src={item.image} alt='notFound'></img>
+                      <div><button class="addBtn">ADD</button></div>
+                      <div className="subbutton">
+                        <button className='minusBtn'>-</button>
+                        <span className='numBtn' >{item.qty}</span>
+                        <button class="plusBtn">+</button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        <% }); %>
+      </ul>
+      <% } else { %>
+      <p>Your cart is empty.</p>
+      <% } %>
+    </div>
+
+    <!-- Add more cart-related content as needed -->
+  </body>
+</html>

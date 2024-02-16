@@ -135,7 +135,7 @@ module.exports.getRestaurantById = async (req, res) => {
   try {
     const restaurant = await Restaurants.findById(id);
     const menuItem = await MenuItem.find({ restaurant: id });
-    console.log(menuItem);
+    // console.log(menuItem);
 
     if (!menuItem) {
       return res.status(404).send("Menu Item not found.");

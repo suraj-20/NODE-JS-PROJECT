@@ -20,7 +20,7 @@ module.exports.addMenuItme = async (req, res) => {
     });
 
     const result = await menuItems.save();
-    console.log(result);
+    // console.log(result);
 
     res.json(result);
   } catch (error) {
